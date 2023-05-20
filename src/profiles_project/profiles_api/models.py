@@ -23,7 +23,7 @@ class UserProfileManager(BaseUserManager):
     def create_superuser(self, email, name, password):
         """ Creates and saves a new superuser with given details """
 
-        user = user.create_user(email, name, password)
+        user = self.create_user(email, name, password)  # Fix: use self.create_user instead of user.create_user
 
         user.is_superuser = True
         user.is_staff = True
@@ -45,16 +45,13 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = ['name']
 
     def get_full_name(self):
-        """ Used to get a users full name """
-
+        """ Used to get a user's full name """
         return self.name
 
     def get_short_name(self):
-        """ Used to get a users short name """
-
+        """ Used to get a user's short name """
         return self.name
 
     def __str__(self):
         """ Django uses this when it needs to convert the object to a string """
-
         return self.email
