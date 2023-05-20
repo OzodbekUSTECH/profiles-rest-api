@@ -26,6 +26,8 @@ Vagrant.configure ("2")do |config|
     sudo apt-get install -y python3-dev sqlite python-pip
     # Upgrade pip to the latest version.
     sudo pip install --upgrade pip
+    sudo pip install virtualenvwrapper
+
     # Install and configure python virtualenvwrapper.
     sudo pip install virtualenvwrapper
     if ! grep -q VIRTUALENV_ALREADY_ADDED /home/vagrant/.bashrc; then
